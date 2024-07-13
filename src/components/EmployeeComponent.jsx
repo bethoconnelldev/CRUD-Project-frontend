@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { addEmployee } from "../services/EmployeeService";
 
 const EmployeeComponent = () => {
   const [firstName, setFirstName] = useState("");
@@ -11,6 +12,8 @@ const EmployeeComponent = () => {
     e.preventDefault();
     const employee = { firstName, lastName, email };
     console.log(employee);
+
+    addEmployee(employee);
   }
 
   return (
