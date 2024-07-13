@@ -7,27 +7,16 @@ const EmployeeComponent = () => {
 
   const [email, setEmail] = useState("");
 
-  const handleFirstName = (e) => {
-    setFirstName(e.target.value);
-  }
-
-  const handleLastName = (e) => {
-    setLastName(e.target.value);
-  }
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  }
-
-  function saveEmployee(e){
+  function saveEmployee(e) {
     e.preventDefault();
-    const employee = {firstName, lastName, email}
-    console.log(employee)
+    const employee = { firstName, lastName, email };
+    console.log(employee);
   }
 
   return (
     <div className="container">
-    <br/><br/>
+      <br />
+      <br />
       <div className="row">
         <div className="card col-md-6 offset-md-3 offset-md-3">
           <h2 className="text-center">Add Employee</h2>
@@ -41,7 +30,7 @@ const EmployeeComponent = () => {
                   name="firstName"
                   value={firstName}
                   className="form-control"
-                  onChange={handleFirstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 ></input>
               </div>
 
@@ -53,7 +42,7 @@ const EmployeeComponent = () => {
                   name="lastName"
                   value={lastName}
                   className="form-control"
-                  onChange={handleLastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 ></input>
               </div>
 
@@ -65,11 +54,11 @@ const EmployeeComponent = () => {
                   name="email"
                   value={email}
                   className="form-control"
-                  onChange={handleEmail}
+                  onChange={(e) => setEmail(e.target.value)}
                 ></input>
               </div>
 
-              <button className="btn btn-success mt-1" onClick={saveEmployee} >
+              <button className="btn btn-success mt-1" onClick={saveEmployee}>
                 Save
               </button>
             </form>
