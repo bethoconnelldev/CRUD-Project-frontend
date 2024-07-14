@@ -1,20 +1,28 @@
 import React, { useState } from "react";
 import { addEmployee } from "../services/EmployeeService";
+import { useNavigate } from "react-router-dom";
 
 const EmployeeComponent = () => {
   const [firstName, setFirstName] = useState("");
-
   const [lastName, setLastName] = useState("");
-
   const [email, setEmail] = useState("");
 
-  function saveEmployee(e) {
+  const navigate = useNavigate();
+
+  const saveEmployee = (e) => {
     e.preventDefault();
     const employee = { firstName, lastName, email };
     console.log(employee);
 
-    addEmployee(employee);
-  }
+    addEmployee(employee)
+      .then((response) => {
+        console.log(response.data);
+        navigate('/employees');
+      })
+      .catch((error) => {
+        console.error("There was an error saving the employee!", error);
+      });
+  };
 
   return (
     <div className="container">
